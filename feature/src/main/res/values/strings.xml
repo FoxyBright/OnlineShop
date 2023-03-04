@@ -1,0 +1,53 @@
+<resources>
+    <!--  Sign-in-Screen  -->
+    <string name="sign_in_has_account">Already have an account?</string>
+    <string name="sign_in_google_enter">Sign in with Google</string>
+    <string name="sign_in_apple_enter">Sign in with Apple</string>
+    <string name="last_name_placeholder">Last name</string>
+    <string name="sign_in_title">Sign in</string>
+
+    <!--  Login-screen  -->
+    <string name="login_title">Welcome back</string>
+    <string name="login_button">Login</string>
+
+    <!--  Profile-screen  -->
+    <string name="profile_restore_purchase_label">Restore Purchase</string>
+    <string name="profile_payment_method_label">Payment method</string>
+    <string name="profile_trade_history_label">Trade history</string>
+    <string name="profile_trade_store_label">Trade store</string>
+    <string name="profile_upload_button">Upload item</string>
+    <string name="profile_balance_label">Balance</string>
+    <string name="profile_logout_label">Log out</string>
+    <string name="profile_help_label">Help</string>
+    <string name="profile_title">Profile</string>
+
+    <!--  PageOne-screen  -->
+    <string name="page_one_search_placeholder">What are you looking for ?</string>
+    <string name="page_one_flash_sale_group_title">Flash Sale</string>
+    <string name="page_one_brands_group_title">Latest</string>
+    <string name="page_one_latest_group_title">Brands</string>
+    <string name="page_one_view_all_button">View all</string>
+    <string name="page_one_title_prefix">Trade by</string>
+    <string name="page_one_location">Location</string>
+    <string name="page_one_title_suffix">bata</string>
+    <string name="page_one_sale">% off</string>
+
+
+    <!--  PageOne-screen-categories  -->
+    <string name="categories_headphones">Headphones</string>
+    <string name="categories_furniture">Furniture</string>
+    <string name="categories_phones">Phones</string>
+    <string name="categories_games">Games</string>
+    <string name="categories_cars">Cars</string>
+    <string name="categories_kids">kids</string>
+
+    <!--  PageTwo-screen  -->
+    <string name="page_two_items_quantity">Quantity:</string>
+    <string name="page_two_add_to_cart">ADD TO CART</string>
+
+    <!--  shared  -->
+    <string name="first_name_placeholder">First name</string>
+    <string name="password_placeholder">Password</string>
+    <string name="email_placeholder">Email</string>
+
+</resources>

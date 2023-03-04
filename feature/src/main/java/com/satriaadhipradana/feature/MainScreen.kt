@@ -10,7 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.satriaadhipradana.domain.PageOneViewModel
+import com.satriaadhipradana.domain.viewmodel.PageOneViewModel
+import com.satriaadhipradana.shared.model.ProductModel
 
 @Composable
 fun MainScreen(
@@ -19,17 +20,30 @@ fun MainScreen(
 ) {
     
     val latest by vm.latest.collectAsState()
+    val flashSale by vm.flashSale.collectAsState()
     
     LaunchedEffect(Unit) {
         vm.getLatest()
+        vm.getFlashSale()
     }
     
+    Row(modifier.fillMaxSize()) {
+        Column(latest, Modifier.weight(1f))
+        Column(flashSale, Modifier.weight(1f))
+    }
+}
+
+@Composable
+private fun Column(
+    list: List<ProductModel>,
+    modifier: Modifier = Modifier,
+) {
     LazyColumn(
         modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp),
     ) {
-        items(latest) {
+        items(list) {
             Image(it.imageUrl)
             Item(it.category)
             Item(it.name)

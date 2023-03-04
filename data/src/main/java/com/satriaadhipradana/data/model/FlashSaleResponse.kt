@@ -1,6 +1,6 @@
 package com.satriaadhipradana.data.model
 
-data class SaleResponse(
+data class FlashSaleResponse(
     val flashSale: List<Product>,
 ) {
     
