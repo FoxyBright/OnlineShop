@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = Config.applicationId
+    namespace = "${Config.applicationPrefix}.shared"
     compileSdk = Config.compileSdk
     defaultConfig {
         minSdk = Config.minSdk

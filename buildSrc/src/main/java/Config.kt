@@ -5,7 +5,8 @@ object Config {
     
     private const val rules = "rules-pro"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    const val applicationId = "com.satriaadhipradana.data"
+    const val applicationId = "com.satriaadhipradana.onlineshop"
+    const val applicationPrefix = "com.satriaadhipradana"
     const val proguardFile = "proguard-android-optimize.txt"
     const val proguard = "proguard-$rules"
     const val consume = "consumer-$rules"

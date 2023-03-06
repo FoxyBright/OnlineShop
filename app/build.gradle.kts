@@ -18,7 +18,7 @@ android {
         vectorDrawables { useSupportLibrary = true }
     }
     buildFeatures { compose = true }
-
+    
     composeOptions {
         kotlinCompilerExtensionVersion = Config.kotlinCompilerExVer
         kotlinCompilerVersion = Config.kotlinCompilerVer
@@ -29,7 +29,6 @@ android {
         sourceCompatibility(Config.sourceCompatibility)
         targetCompatibility(Config.sourceCompatibility)
     }
-    @Suppress("deprecation")
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

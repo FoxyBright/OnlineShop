@@ -1,16 +1,19 @@
 package com.satriaadhipradana.data
 
 import android.content.Context
-import androidx.preference.PreferenceManager.getDefaultSharedPreferences
+import android.content.Context.MODE_PRIVATE
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy
 import com.fasterxml.jackson.module.kotlin.jsonMapper
 import com.fasterxml.jackson.module.kotlin.kotlinModule
 import com.satriaadhipradana.shared.model.ProfileModel
 
+
 class ProfileStore(context: Context) {
     
-    private val preference = getDefaultSharedPreferences(context)
-    private val builder = preference.edit()
+    private val key = "profile"
+    private var preference = context
+        .getSharedPreferences(key, MODE_PRIVATE)
+    private var editor = preference.edit()
     
     private val mapper = jsonMapper {
         propertyNamingStrategy(SnakeCaseStrategy())
@@ -18,11 +21,24 @@ class ProfileStore(context: Context) {
     }
     
     fun saveProfile(profile: ProfileModel) {
-        builder.putString("profile", profile.toString())
+        editor.putString(
+            key, mapper.writeValueAsString(profile)
+        ).apply()
     }
     
-    fun getProfile() = mapper.readValue(
-        preference.getString("profile", ""),
-        ProfileModel::class.java
-    ) ?: null
+    fun isAuthorized() = getProfile() != null
+    
+    fun logout() {
+        editor.remove(key).apply()
+    }
+    
+    fun getProfile() = try {
+        mapper.readValue(
+            preference.getString(key, null),
+            ProfileModel::class.java
+        )
+    } catch(e: Exception) {
+        e.stackTraceToString()
+        null
+    }
 }

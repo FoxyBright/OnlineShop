@@ -10,10 +10,10 @@ val viewModelModule = module {
     
     single { ProfileViewModel(get()) }
     
+    single { LoginViewModel(get()) }
+    
     singleOf(::PageTwoViewModel)
     
     singleOf(::SignInViewModel)
-    
-    singleOf(::LoginViewModel)
     
 }
