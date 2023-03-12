@@ -19,7 +19,9 @@ import com.satriaadhipradana.shared.theme.OnlineShopTheme
 @Preview
 @Composable
 private fun OSButtonPreview() {
-    OnlineShopTheme { OSButton(stringResource(R.string.login_button)) }
+    OnlineShopTheme {
+        OSButton(stringResource(R.string.login_button))
+    }
 }
 
 @Composable
@@ -40,7 +42,7 @@ fun OSButton(
             Text(
                 text, Modifier.padding(vertical = 14.dp),
                 color = colorScheme.onPrimary,
-                style = ExtraType().button,
+                style = ExtraType.button,
                 fontWeight = Bold
             )
         }

@@ -17,7 +17,8 @@ fun DependencyHandlerScope.base() = implementation(
     "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
     "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1",
     "androidx.appcompat:appcompat:1.6.1",
-    "androidx.core:core-ktx:1.9.0"
+    "androidx.core:core-ktx:1.9.0",
+    "androidx.browser:browser:1.5.0"
 )
 
 private const val composeUiVer = "1.4.0-alpha02"

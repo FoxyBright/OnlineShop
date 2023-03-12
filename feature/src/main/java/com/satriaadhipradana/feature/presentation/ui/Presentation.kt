@@ -14,7 +14,6 @@ import com.satriaadhipradana.feature.presentation.ui.login.LoginScreen
 import com.satriaadhipradana.feature.presentation.ui.pageone.PageOneScreen
 import com.satriaadhipradana.feature.presentation.ui.pagetwo.PageTwoScreen
 import com.satriaadhipradana.feature.presentation.ui.profile.ProfileScreen
-import com.satriaadhipradana.feature.presentation.ui.signin.SignInScreen
 import org.koin.java.KoinJavaComponent.get
 
 object Presentation {
@@ -24,7 +23,6 @@ object Presentation {
     private val pageTwoVM = getVm(PageTwoViewModel::class.java)
     private val pageOneVM = getVm(PageOneViewModel::class.java)
     private val profileVM = getVm(ProfileViewModel::class.java)
-    private val signInVM = getVm(SignInViewModel::class.java)
     private val loginVM = getVm(LoginViewModel::class.java)
     
     @Composable
@@ -39,9 +37,6 @@ object Presentation {
                 .background(colorScheme.background)
         ) {
             NavHost(nav, start) {
-                composable("signIn")
-                { SignInScreen(signInVM, nav) }
-                
                 composable("login")
                 { LoginScreen(loginVM, nav) }
                 

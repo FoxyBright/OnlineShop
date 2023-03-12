@@ -4,6 +4,7 @@
 
     <!--  Sign-in-Screen  -->
     <string name="sign_in_has_account">Already have an account?</string>
+    <string name="sign_in_has_account_but">Log in</string>
     <string name="sign_in_google_enter">Sign in with Google</string>
     <string name="sign_in_apple_enter">Sign in with Apple</string>
     <string name="last_name_placeholder">Last name</string>

@@ -13,7 +13,4 @@ val viewModelModule = module {
     single { LoginViewModel(get()) }
     
     singleOf(::PageTwoViewModel)
-    
-    singleOf(::SignInViewModel)
-    
 }
