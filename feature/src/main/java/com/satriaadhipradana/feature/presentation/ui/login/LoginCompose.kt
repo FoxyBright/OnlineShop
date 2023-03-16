@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.satriaadhipradana.feature.presentation.ui.login.LoginScreenType.LOGIN
 import com.satriaadhipradana.feature.presentation.ui.login.LoginScreenType.SIGN_IN
 import com.satriaadhipradana.shared.R
-import com.satriaadhipradana.shared.theme.ExtraType
-import com.satriaadhipradana.shared.theme.OnlineShopTheme
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.loginTitle
+import com.satriaadhipradana.shared.theme.OSTheme
 
 private val ls = LoginState(
     firstName = "",
@@ -34,13 +34,13 @@ private val ls = LoginState(
 @Preview
 @Composable
 private fun LoginPreview() {
-    OnlineShopTheme { LoginContent(ls) }
+    OSTheme { LoginContent(ls) }
 }
 
 @Preview
 @Composable
 private fun SignInPreview() {
-    OnlineShopTheme {
+    OSTheme {
         LoginContent(
             ls.copy(type = SIGN_IN)
         )
@@ -95,7 +95,7 @@ fun LoginContent(
                         SIGN_IN -> R.string.sign_in_title
                     }
                 ), Modifier.fillMaxWidth(),
-                style = ExtraType.loginTitle.copy(
+                style = loginTitle.copy(
                     textAlign = TextAlign.Center
                 )
             )

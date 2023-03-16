@@ -22,7 +22,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.satriaadhipradana.shared.R
-import com.satriaadhipradana.shared.theme.ExtraType
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.textField
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,7 +70,7 @@ private fun TextField(
     placeHolder: String,
     modifier: Modifier = Modifier,
 ) {
-    val style = ExtraType.textField
+    val style = textField
     BasicTextField(
         text, {
             if(it.length <= 30) onTextChange(it)

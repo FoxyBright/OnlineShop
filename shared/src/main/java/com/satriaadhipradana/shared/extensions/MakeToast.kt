@@ -12,3 +12,7 @@ fun makeToast(
         Toast.LENGTH_SHORT
     ).show()
 }
+
+fun notImpl(context: Context) {
+    makeToast(context, "Functionality not implemented")
+}

@@ -13,13 +13,13 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.satriaadhipradana.shared.R
-import com.satriaadhipradana.shared.theme.ExtraType
-import com.satriaadhipradana.shared.theme.OnlineShopTheme
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.button
+import com.satriaadhipradana.shared.theme.OSTheme
 
 @Preview
 @Composable
 private fun OSButtonPreview() {
-    OnlineShopTheme {
+    OSTheme {
         OSButton(stringResource(R.string.login_button))
     }
 }
@@ -42,7 +42,7 @@ fun OSButton(
             Text(
                 text, Modifier.padding(vertical = 14.dp),
                 color = colorScheme.onPrimary,
-                style = ExtraType.button,
+                style = button,
                 fontWeight = Bold
             )
         }

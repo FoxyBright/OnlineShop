@@ -29,7 +29,7 @@ object Presentation {
     fun MainScreen(isAuthorized: Boolean) {
         
         val nav = rememberNavController()
-        val start = if(isAuthorized) "profile" else "login"
+        val start = if(isAuthorized) "pageOne" else "login"
         
         Box(
             Modifier
@@ -48,6 +48,9 @@ object Presentation {
                 
                 composable("pageTwo")
                 { PageTwoScreen(pageTwoVM, nav) }
+                
+                composable("notResolved")
+                { NotResolved(nav) }
             }
         }
     }

@@ -23,7 +23,8 @@ import com.satriaadhipradana.feature.presentation.ui.login.LoginScreenType.SIGN_
 import com.satriaadhipradana.shared.R
 import com.satriaadhipradana.shared.components.OSButton
 import com.satriaadhipradana.shared.components.OSTextField
-import com.satriaadhipradana.shared.theme.ExtraType
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.external
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.hasAccount
 import com.satriaadhipradana.shared.theme.LightBlue
 import com.satriaadhipradana.shared.theme.LightGray
 
@@ -89,7 +90,7 @@ private fun SubText(
     hide: Boolean,
     onClick: () -> Unit,
 ) {
-    val style = ExtraType.hasAccount
+    val style = hasAccount
     val text = buildAnnotatedString {
         if(!hide) {
             append("${stringResource(R.string.sign_in_has_account)}  ")
@@ -99,11 +100,13 @@ private fun SubText(
             }; pop()
         }
     }
+    
     ClickableText(text, modifier, style.copy(LightGray)) {
         text.getStringAnnotations(("login"), it, it)
             .firstOrNull()?.let { onClick() }
     }
 }
+
 
 @Composable
 fun LoginExternals(
@@ -146,7 +149,7 @@ private fun LoginExtItem(
         Text(
             stringResource(text),
             Modifier.padding(start = 14.dp),
-            style = ExtraType.external
+            style = external
         )
     }
 }

@@ -72,6 +72,7 @@ fun LoginScreen(
                         GOOGLE -> "https://www.google.com"
                     }
                 )
+                nav.navigate("pageOne")
             }
             
             override fun onLogin() {
