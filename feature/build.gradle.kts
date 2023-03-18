@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace ="${Config.applicationPrefix}.feature"
+    namespace = "${Config.applicationPrefix}.feature"
     compileSdk = Config.compileSdk
     defaultConfig {
         minSdk = Config.minSdk

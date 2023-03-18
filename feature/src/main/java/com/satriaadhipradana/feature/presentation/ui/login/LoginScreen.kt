@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.satriaadhipradana.domain.viewmodel.LoginViewModel
+import com.satriaadhipradana.feature.presentation.ui.Presentation.toApp
 import com.satriaadhipradana.feature.presentation.ui.login.ExternalType.APPLE
 import com.satriaadhipradana.feature.presentation.ui.login.ExternalType.GOOGLE
 import com.satriaadhipradana.feature.presentation.ui.login.LoginScreenType.LOGIN
@@ -72,7 +73,7 @@ fun LoginScreen(
                         GOOGLE -> "https://www.google.com"
                     }
                 )
-                nav.navigate("pageOne")
+                nav.toApp()
             }
             
             override fun onLogin() {
@@ -80,10 +81,10 @@ fun LoginScreen(
                     if(loginControl) {
                         if(authorized) {
                             vm.login()
-                            nav.navigate("profile")
+                            nav.toApp()
                         } else {
                             vm.register()
-                            nav.navigate("profile")
+                            nav.toApp()
                         }
                     } else makeToast(
                         context, ("Invalid entered data")

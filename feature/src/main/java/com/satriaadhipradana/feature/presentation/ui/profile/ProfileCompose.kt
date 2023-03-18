@@ -40,7 +40,7 @@ interface ProfileCallback {
     fun onBack()
     fun onPhotoChange()
     fun onUploadClick()
-    fun onMenuItemClick(point: Int)
+    fun onNavigate(point: Int)
     fun onElementsClick()
 }
 
@@ -59,7 +59,7 @@ fun ProfileContent(
         },
         bottomBar = {
             OSNavBar(4)
-            { callback?.onMenuItemClick(it) }
+            { callback?.onNavigate(it) }
         }, containerColor = colorScheme.background,
         content = {
             Content(
@@ -81,7 +81,7 @@ private fun TopBar(
             painterResource(
                 R.drawable.ic_back_arrow
             ), (null), Modifier.size(18.dp),
-            tint = Black
+            tint = OSBlack
         )
     }
 }

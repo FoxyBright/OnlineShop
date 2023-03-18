@@ -12,4 +12,10 @@ class DataManager(private val web: WebSource) {
     
     suspend fun getLatest() =
         web.getLatest().map()
+    
+    suspend fun getProduct() =
+        web.getProduct()
+    
+    suspend fun search() =
+        web.search()
 }

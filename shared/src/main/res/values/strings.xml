@@ -29,8 +29,8 @@
     <!--  PageOne-screen  -->
     <string name="page_one_search_placeholder">What are you looking for ?</string>
     <string name="page_one_flash_sale_group_title">Flash Sale</string>
-    <string name="page_one_brands_group_title">Latest</string>
-    <string name="page_one_latest_group_title">Brands</string>
+    <string name="page_one_latest_group_title">Latest</string>
+    <string name="page_one_brands_group_title">Brands</string>
     <string name="page_one_view_all_button">View all</string>
     <string name="page_one_title_prefix">Trade by</string>
     <string name="page_one_location">Location</string>

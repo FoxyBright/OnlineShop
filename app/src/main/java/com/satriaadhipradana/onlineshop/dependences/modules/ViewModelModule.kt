@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     
-    single { PageOneViewModel(get()) }
+    single { PageOneViewModel(get(), get()) }
     
     single { ProfileViewModel(get()) }
     

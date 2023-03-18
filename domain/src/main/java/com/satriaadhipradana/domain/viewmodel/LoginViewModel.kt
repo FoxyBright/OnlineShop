@@ -53,8 +53,7 @@ class LoginViewModel(
         _firstName.emit(text)
     }
     
-    suspend fun register(){
-    
+    fun register() {
     }
     
     fun login() {

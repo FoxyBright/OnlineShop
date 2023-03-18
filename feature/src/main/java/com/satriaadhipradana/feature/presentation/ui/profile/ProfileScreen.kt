@@ -5,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.satriaadhipradana.domain.viewmodel.ProfileViewModel
+import com.satriaadhipradana.feature.presentation.ui.Presentation.logout
+import com.satriaadhipradana.shared.components.OSLoading
 import com.satriaadhipradana.shared.extensions.notImpl
 import kotlinx.coroutines.launch
 
@@ -28,17 +30,14 @@ fun ProfileScreen(
                 override fun onLogout() {
                     scope.launch {
                         vm.logout()
-                        nav.navigate("login")
+                        nav.logout()
                     }
                 }
                 
-                override fun onMenuItemClick(point: Int) {
+                override fun onNavigate(point: Int) {
                     nav.navigate(
-                        when(point) {
-                            0 -> "pageOne"
-                            4 -> "profile"
-                            else -> "notResolved"
-                        }
+                        if(point == 0) "pageOne"
+                        else "notResolved/$point"
                     )
                 }
                 
@@ -59,5 +58,5 @@ fun ProfileScreen(
                 }
             }
         )
-    }
+    } ?: OSLoading()
 }

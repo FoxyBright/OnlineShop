@@ -33,6 +33,10 @@ fun DependencyHandlerScope.compose() = implementation(
     "androidx.compose.ui:ui-tooling:$composeUiVer",
     "androidx.compose.ui:ui-graphics",
     "androidx.compose.ui:ui:$}"
+) and swipeRefresher()
+
+private fun DependencyHandlerScope.swipeRefresher() = implementation(
+    "com.google.accompanist:accompanist-swiperefresh:0.24.13-rc"
 )
 
 private const val ktorVer = "2.2.3"

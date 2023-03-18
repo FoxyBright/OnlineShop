@@ -6,9 +6,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType.Companion.IntType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.satriaadhipradana.domain.viewmodel.*
 import com.satriaadhipradana.feature.presentation.ui.login.LoginScreen
 import com.satriaadhipradana.feature.presentation.ui.pageone.PageOneScreen
@@ -25,6 +28,14 @@ object Presentation {
     private val profileVM = getVm(ProfileViewModel::class.java)
     private val loginVM = getVm(LoginViewModel::class.java)
     
+    fun NavHostController.toApp() {
+        this.navigate("pageOne") { popUpTo(0) }
+    }
+    
+    fun NavHostController.logout() {
+        this.navigate("login") { popUpTo(0) }
+    }
+    
     @Composable
     fun MainScreen(isAuthorized: Boolean) {
         
@@ -37,6 +48,19 @@ object Presentation {
                 .background(colorScheme.background)
         ) {
             NavHost(nav, start) {
+                composable(
+                    route = "notResolved/{screen}",
+                    arguments = listOf(
+                        navArgument("screen") {
+                            type = IntType
+                            defaultValue = 0
+                        }
+                    )
+                ) {
+                    it.arguments?.getInt("screen")
+                        ?.let { s -> UnResolved(nav, s) }
+                }
+                
                 composable("login")
                 { LoginScreen(loginVM, nav) }
                 
@@ -49,8 +73,6 @@ object Presentation {
                 composable("pageTwo")
                 { PageTwoScreen(pageTwoVM, nav) }
                 
-                composable("notResolved")
-                { NotResolved(nav) }
             }
         }
     }

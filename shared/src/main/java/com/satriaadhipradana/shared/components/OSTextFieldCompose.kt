@@ -85,12 +85,10 @@ private fun TextField(
             VisualTransformation.None
         else PasswordVisualTransformation(),
         decorationBox = {
-            if(text.isEmpty()) {
-                Text(
-                    placeHolder,
-                    style = style.copy(Gray)
-                )
-            }; it()
+            if(text.isEmpty()) Text(
+                placeHolder,
+                style = style.copy(Gray)
+            ); it()
         }
     )
 }
