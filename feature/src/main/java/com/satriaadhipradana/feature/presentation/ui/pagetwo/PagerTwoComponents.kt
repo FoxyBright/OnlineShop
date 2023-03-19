@@ -67,7 +67,7 @@ fun ProductImage(
             .fillMaxWidth(),
         state, contentPadding = PaddingValues(
             end = 52.dp
-        ), itemSpacing = 16.dp
+        ), itemSpacing = 60.dp
     ) { page ->
         Card(
             Modifier
@@ -84,7 +84,7 @@ fun ProductImage(
             )
         }
         if(!state.isScrollInProgress)
-            onSlide(state.currentPage)
+            onSlide(page)
     }
 }
 

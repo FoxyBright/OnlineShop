@@ -1,5 +1,7 @@
 package com.satriaadhipradana.feature.presentation.ui.profile
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.GetContent
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +21,15 @@ fun ProfileScreen(
     val profile by vm.profile.collectAsState()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    
+    val launcher =
+        rememberLauncherForActivityResult(GetContent())
+        {
+            scope.launch {
+                vm.updatePhoto(it)
+                vm.getProfile()
+            }
+        }
     
     LaunchedEffect(Unit) { vm.getProfile() }
     
@@ -46,7 +57,7 @@ fun ProfileScreen(
                 }
                 
                 override fun onPhotoChange() {
-                    notImpl(context)
+                    launcher.launch("image/*")
                 }
                 
                 override fun onUploadClick() {

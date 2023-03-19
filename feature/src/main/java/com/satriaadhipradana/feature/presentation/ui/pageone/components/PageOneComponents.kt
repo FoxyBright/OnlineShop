@@ -1,5 +1,6 @@
 package com.satriaadhipradana.feature.presentation.ui.pageone.components
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
@@ -34,7 +36,7 @@ import com.satriaadhipradana.feature.presentation.ui.pageone.components.CardType
 import com.satriaadhipradana.feature.presentation.ui.pageone.components.CardType.SHORT
 import com.satriaadhipradana.shared.R
 import com.satriaadhipradana.shared.model.CategoryModel
-import com.satriaadhipradana.shared.model.CategoryModel.Companion.lisl
+import com.satriaadhipradana.shared.model.CategoryModel.Companion.list
 import com.satriaadhipradana.shared.model.ProductModel
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.appName
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.category
@@ -44,7 +46,6 @@ import com.satriaadhipradana.shared.theme.ExtraType.Companion.viewAll
 import com.satriaadhipradana.shared.theme.Moused
 import com.satriaadhipradana.shared.theme.OSBlack
 import com.satriaadhipradana.shared.theme.Platinum
-import java.io.File
 
 @Composable
 fun PageOneTopBarData(
@@ -70,7 +71,10 @@ fun PageOneTopBarData(
             Color.Black
         )
         TopName(modifier.weight(1f))
-        Avatar(state.profile?.avatar, Modifier, callback)
+        Avatar(
+            state.profile?.avatar,
+            Modifier, callback
+        )
     }
 }
 
@@ -88,7 +92,7 @@ fun TopName(modifier: Modifier) {
 
 @Composable
 private fun Avatar(
-    avatar: File?,
+    avatar: String?,
     modifier: Modifier = Modifier,
     callback: PageOneCallback?,
 ) {
@@ -100,13 +104,16 @@ private fun Avatar(
         ) {
             Image(
                 painter = avatar?.let {
-                    rememberAsyncImagePainter(avatar)
+                    rememberAsyncImagePainter(
+                        Uri.parse(avatar)
+                    )
                 } ?: painterResource(
                     R.drawable.avatar
                 ), (null), Modifier
                     .size(31.dp)
                     .clip(CircleShape)
-                    .clickable { callback?.onProfileClick() }
+                    .clickable { callback?.onProfileClick() },
+                contentScale = Crop
             )
         }
         Row(Modifier.padding(top = 7.dp), Start, Alignment.Top) {
@@ -133,8 +140,11 @@ fun Categories(
     modifier: Modifier = Modifier,
     onCategoryClick: (CategoryModel) -> Unit,
 ) {
-    Row(modifier.fillMaxWidth(), SpaceBetween) {
-        lisl.forEach {
+    LazyRow(
+        modifier.fillMaxWidth(),
+        horizontalArrangement = SpaceBetween
+    ) {
+        items(list) {
             CategoryItem(
                 it.name, it.icon
             ) { onCategoryClick(it) }

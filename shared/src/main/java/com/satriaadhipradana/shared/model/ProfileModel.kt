@@ -1,6 +1,5 @@
 package com.satriaadhipradana.shared.model
 
-import java.io.File
 import java.util.UUID.randomUUID
 
 data class ProfileModel(
@@ -8,7 +7,7 @@ data class ProfileModel(
     val name: String,
     val email: String,
     val balance: Int,
-    val avatar: File? = null,
+    val avatar: String? = null,
 )
 
 val DemoProfileModel = ProfileModel(

@@ -79,6 +79,7 @@ class ExtraType {
         )
         
         val profileTitle = profileName.copy(
+            fontSize = 10.sp,
             color = Black
         )
         

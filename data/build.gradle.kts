@@ -2,7 +2,9 @@
 
 plugins {
     id("com.android.library")
+    kotlin("kapt")
     kotlin("android")
+    id("realm-android")
 }
 
 android {

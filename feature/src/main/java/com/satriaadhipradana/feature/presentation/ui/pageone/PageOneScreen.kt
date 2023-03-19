@@ -19,6 +19,8 @@ fun PageOneScreen(
     val context = LocalContext.current
     
     val flashSale by vm.flashSale.collectAsState()
+    val searchList by vm.searchList.collectAsState()
+    val searchState by vm.searchState.collectAsState()
     val latest by vm.latest.collectAsState()
     val brands by vm.brands.collectAsState()
     val profile by vm.profile.collectAsState()
@@ -28,10 +30,22 @@ fun PageOneScreen(
     
     PageOneContent(
         PageOneState(
-            profile, search, latest, flashSale, brands
+            profile, search, latest, flashSale,
+            brands, searchList, searchState
         ), Modifier, object: PageOneCallback {
+            
+            override fun onSelectSearchListItem(text: String) {
+                scope.launch {
+                    vm.searchTextChange(text)
+                    vm.changeSearchState()
+                }
+            }
+            
             override fun onSearchChange(text: String) {
-                scope.launch { vm.searchTextChange(text) }
+                scope.launch {
+                    vm.changeSearchState()
+                    vm.searchTextChange(text)
+                }
             }
             
             override fun onUpdate() {
@@ -62,11 +76,19 @@ fun PageOneScreen(
                 notImpl(context)
             }
             
+            override fun onLatestProductClick() {
+                notImpl(context)
+            }
+            
+            override fun onBrandsProductClick() {
+                notImpl(context)
+            }
+            
             override fun onBrandsViewAllClick() {
                 notImpl(context)
             }
             
-            override fun onProductClick() {
+            override fun onFlashSaleProductClick() {
                 nav.navigate("pageTwo")
             }
             

@@ -1,5 +1,10 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath "io.realm:realm-gradle-plugin:10.13.3-transformer-api" }
+}
+
 plugins {
-    id 'com.android.application' version '8.1.0-alpha08' apply false
-    id 'com.android.library' version '8.1.0-alpha08' apply false
+    id 'com.android.application' version '8.1.0-alpha09' apply false
+    id 'com.android.library' version '8.1.0-alpha09' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }

@@ -1,6 +1,7 @@
-package com.satriaadhipradana.data
+package com.satriaadhipradana.data.manager
 
 import com.satriaadhipradana.data.model.Product
+import com.satriaadhipradana.data.source.WebSource
 
 class DataManager(private val web: WebSource) {
     

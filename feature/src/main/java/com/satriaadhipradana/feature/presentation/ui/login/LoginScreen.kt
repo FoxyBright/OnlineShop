@@ -36,6 +36,22 @@ fun LoginScreen(
             && lastName.isNotBlank()
     else password.isNotBlank())
     
+    fun authorize() {
+        if(authorized) {
+            vm.login()?.let {
+                nav.toApp()
+            } ?: makeToast(
+                context, ("Such a user is not registered")
+            )
+        } else {
+            vm.register()?.let {
+                nav.toApp()
+            } ?: makeToast(
+                context, ("A user with such data exists")
+            )
+        }
+    }
+    
     LoginContent(
         LoginState(
             firstName, lastName,
@@ -73,20 +89,15 @@ fun LoginScreen(
                         GOOGLE -> "https://www.google.com"
                     }
                 )
+                vm.externalLogin()
                 nav.toApp()
             }
             
             override fun onLogin() {
                 scope.launch {
-                    if(loginControl) {
-                        if(authorized) {
-                            vm.login()
-                            nav.toApp()
-                        } else {
-                            vm.register()
-                            nav.toApp()
-                        }
-                    } else makeToast(
+                    if(loginControl)
+                        authorize()
+                    else makeToast(
                         context, ("Invalid entered data")
                     )
                 }

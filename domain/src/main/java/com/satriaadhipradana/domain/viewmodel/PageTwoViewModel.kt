@@ -1,7 +1,7 @@
 package com.satriaadhipradana.domain.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.satriaadhipradana.data.DataManager
+import com.satriaadhipradana.data.manager.DataManager
 import com.satriaadhipradana.shared.model.FullProductModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

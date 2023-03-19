@@ -1,15 +1,20 @@
 package com.satriaadhipradana.feature.presentation.ui.pageone
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
+import androidx.compose.material3.CardDefaults.cardColors
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign.Companion.Start
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -20,6 +25,7 @@ import com.satriaadhipradana.shared.components.OSNavBar
 import com.satriaadhipradana.shared.components.OSSearch
 import com.satriaadhipradana.shared.model.*
 import com.satriaadhipradana.shared.theme.*
+import com.satriaadhipradana.shared.theme.ExtraType.Companion.profileTitle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -33,6 +39,7 @@ private fun PageOnePreview() {
                 DemoProductModelList,
                 DemoProductModelList,
                 DemoProductModelList,
+                emptyList(), (false)
             )
         )
     }
@@ -44,11 +51,14 @@ data class PageOneState(
     val latest: List<ProductModel>,
     val flashSale: List<ProductModel>,
     val brands: List<ProductModel>,
+    val searchList: List<String>,
+    val searchListShow: Boolean,
 )
 
 interface PageOneCallback {
     
     fun onSearchChange(text: String)
+    fun onSelectSearchListItem(text: String)
     fun onCategoryClick(category: CategoryModel)
     fun onMenuClick()
     fun onProfileClick()
@@ -56,7 +66,9 @@ interface PageOneCallback {
     fun onLatestViewAllClick()
     fun onFlashSaleViewAllClick()
     fun onBrandsViewAllClick()
-    fun onProductClick()
+    fun onLatestProductClick()
+    fun onFlashSaleProductClick()
+    fun onBrandsProductClick()
     fun onAddToCartClick()
     fun onAddToFavourite()
     fun onNavigate(point: Int)
@@ -135,7 +147,7 @@ private fun Content(
         item {
             ProductList(state.latest, Modifier, {
                 callback?.onAddToCartClick()
-            }) { callback?.onProductClick() }
+            }) { callback?.onLatestProductClick() }
         }
         item {
             Group(
@@ -147,7 +159,7 @@ private fun Content(
             ProductList(state.flashSale, Modifier,
                 { callback?.onAddToCartClick() },
                 { callback?.onAddToFavourite() }
-            ) { callback?.onProductClick() }
+            ) { callback?.onFlashSaleProductClick() }
         }
         item {
             Group(
@@ -158,7 +170,7 @@ private fun Content(
         item {
             ProductList(state.brands, Modifier, {
                 callback?.onAddToCartClick()
-            }) { callback?.onProductClick() }
+            }) { callback?.onBrandsProductClick() }
         }
         item { Spacer(Modifier.height(20.dp)) }
     }
@@ -178,5 +190,58 @@ private fun TopBar(
                 .padding(horizontal = 56.dp)
                 .padding(top = 10.dp)
         ) { callback?.onSearchChange(it) }
+        DropList(state.searchListShow, state.searchList)
+        { callback?.onSelectSearchListItem(it) }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun DropList(
+    show: Boolean,
+    list: List<String>,
+    modifier: Modifier = Modifier,
+    onItemSelect: (String) -> Unit,
+) {
+    if(show) Box(modifier) {
+        Popup {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 56.dp)
+                    .background(FavTrans)
+            ) {
+                list.forEachIndexed { i, it ->
+                    Card(
+                        { onItemSelect(it) },
+                        Modifier.height(26.dp),
+                        colors = cardColors(Transparent)
+                    ) {
+                        Column {
+                            Text(
+                                it,
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp)
+                                    .padding(
+                                        top = if(i != 0)
+                                            6.dp else 0.dp,
+                                        bottom = if(i != list.size - 1)
+                                            6.dp else 0.dp
+                                    ),
+                                style = profileTitle.copy(
+                                    textAlign = Start,
+                                    color = EggGray
+                                )
+                            )
+                            if(i != list.size - 1) Divider(
+                                Modifier.padding(start = 24.dp),
+                                1.dp, EggGray
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }

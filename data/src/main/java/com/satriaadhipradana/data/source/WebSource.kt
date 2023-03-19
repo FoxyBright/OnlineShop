@@ -1,4 +1,4 @@
-package com.satriaadhipradana.data
+package com.satriaadhipradana.data.source
 
 import com.satriaadhipradana.data.ktor.KtorSource
 import com.satriaadhipradana.data.model.*

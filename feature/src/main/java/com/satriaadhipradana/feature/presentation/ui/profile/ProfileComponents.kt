@@ -1,5 +1,6 @@
 package com.satriaadhipradana.feature.presentation.ui.profile
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment.Companion.CenterStart
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -30,7 +32,6 @@ import com.satriaadhipradana.shared.theme.*
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.changePhoto
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.profileMenu
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.uploadButton
-import java.io.File
 
 @Composable
 fun ProfileMenuElement(
@@ -87,7 +88,7 @@ fun ProfileMenuElement(
 
 @Composable
 fun ProfileAvatar(
-    avatar: File?,
+    avatar: String?,
     modifier: Modifier = Modifier,
     callback: ProfileCallback?,
 ) {
@@ -102,12 +103,15 @@ fun ProfileAvatar(
         ) {
             Image(
                 painter = avatar?.let {
-                    rememberAsyncImagePainter(avatar)
+                    rememberAsyncImagePainter(
+                        Uri.parse(avatar)
+                    )
                 } ?: painterResource(
                     R.drawable.avatar
                 ), (null), Modifier
                     .size(61.dp)
-                    .clip(CircleShape)
+                    .clip(CircleShape),
+                contentScale = Crop
             )
         }
         Text(

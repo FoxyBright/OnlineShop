@@ -9,7 +9,7 @@ data class CategoryModel(
     
     companion object {
         
-        val lisl = listOf(
+        val list = listOf(
             CategoryModel(R.string.categories_phones, R.drawable.ic_phone_category),
             CategoryModel(R.string.categories_headphones, R.drawable.ic_headphones_category),
             CategoryModel(R.string.categories_games, R.drawable.ic_games_category),

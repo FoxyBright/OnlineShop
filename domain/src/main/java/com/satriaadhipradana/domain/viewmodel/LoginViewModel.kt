@@ -1,14 +1,13 @@
 package com.satriaadhipradana.domain.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.satriaadhipradana.data.ProfileStore
-import com.satriaadhipradana.shared.model.DemoProfileModel
+import com.satriaadhipradana.data.repository.ProfileRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 
 class LoginViewModel(
-    private val store: ProfileStore,
+    private val store: ProfileRepository,
 ): ViewModel() {
     
     private val _firstName = MutableStateFlow("")
@@ -53,10 +52,24 @@ class LoginViewModel(
         _firstName.emit(text)
     }
     
-    fun register() {
-    }
+    fun register() =
+        store.checkRegister(
+            firstName.value,
+            password.value
+        )?.let {
+            store.register(
+                firstName.value,
+                lastName.value,
+                email.value,
+                password.value,
+            )
+        }
     
-    fun login() {
-        store.saveProfile(DemoProfileModel)
-    }
+    
+    fun externalLogin() = store.externalLogin()
+    
+    fun login() = store.login(
+        firstName.value,
+        password.value
+    )
 }
