@@ -32,6 +32,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.satriaadhipradana.feature.presentation.ui.pageone.components.CardType.FULL
 import com.satriaadhipradana.feature.presentation.ui.pageone.components.CardType.SHORT
 import com.satriaadhipradana.shared.R
+import com.satriaadhipradana.shared.extensions.format
 import com.satriaadhipradana.shared.model.DemoProductModel
 import com.satriaadhipradana.shared.model.ProductModel
 import com.satriaadhipradana.shared.theme.*
@@ -41,7 +42,6 @@ import com.satriaadhipradana.shared.theme.ExtraType.Companion.productPrice
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.saleCat
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.saleName
 import com.satriaadhipradana.shared.theme.ExtraType.Companion.salePrice
-import java.util.Locale
 
 @Preview
 @Composable
@@ -66,9 +66,6 @@ private fun ShortProductCardPreview() {
 }
 
 enum class CardType { SHORT, FULL }
-
-private infix fun Float.format(filter: String) =
-    filter.format(Locale("RU"), this)
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)

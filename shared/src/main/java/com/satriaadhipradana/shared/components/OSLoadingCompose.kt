@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun OSLoading() {
+fun OSLoading(modifier: Modifier = Modifier) {
     Box(
-        Modifier.fillMaxSize(),
+        modifier.fillMaxSize(),
         Center
     ) {
         CircularProgressIndicator(

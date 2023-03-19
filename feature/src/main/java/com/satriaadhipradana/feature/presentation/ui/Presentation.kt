@@ -17,6 +17,8 @@ import com.satriaadhipradana.feature.presentation.ui.login.LoginScreen
 import com.satriaadhipradana.feature.presentation.ui.pageone.PageOneScreen
 import com.satriaadhipradana.feature.presentation.ui.pagetwo.PageTwoScreen
 import com.satriaadhipradana.feature.presentation.ui.profile.ProfileScreen
+import com.satriaadhipradana.feature.presentation.ui.screens.CartScreen
+import com.satriaadhipradana.feature.presentation.ui.screens.UnResolved
 import org.koin.java.KoinJavaComponent.get
 
 object Presentation {
@@ -73,6 +75,9 @@ object Presentation {
                 composable("pageTwo")
                 { PageTwoScreen(pageTwoVM, nav) }
                 
+                composable("cart") {
+                    CartScreen(nav)
+                }
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.satriaadhipradana.data.model
 
-import android.graphics.Color
 import com.satriaadhipradana.shared.model.FullProductModel
 import com.satriaadhipradana.shared.model.ProductModel
 
@@ -31,8 +30,6 @@ data class FullProduct(
     fun map() = FullProductModel(
         name, description, rating,
         numberOfReviews,
-        price, colors.map {
-            Color.parseColor(it)
-        }, imageUrls
+        price, colors, imageUrls
     )
 }

@@ -1,4 +1,4 @@
-package com.satriaadhipradana.feature.presentation.ui
+package com.satriaadhipradana.feature.presentation.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

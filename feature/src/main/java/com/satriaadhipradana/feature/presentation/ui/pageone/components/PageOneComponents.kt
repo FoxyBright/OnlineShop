@@ -70,7 +70,7 @@ fun PageOneTopBarData(
             Color.Black
         )
         TopName(modifier.weight(1f))
-        Avatar(state.profile.avatar, Modifier, callback)
+        Avatar(state.profile?.avatar, Modifier, callback)
     }
 }
 

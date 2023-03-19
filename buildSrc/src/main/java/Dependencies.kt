@@ -3,7 +3,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun DependencyHandlerScope.feature() = implementation(
     "io.coil-kt:coil-compose:2.2.2"
-) and dependence() and compose()
+) and dependence() and compose() and pager()
 
 fun DependencyHandlerScope.app() = base() and koin() and compose()
 
@@ -31,8 +31,9 @@ fun DependencyHandlerScope.compose() = implementation(
     "androidx.compose.ui:ui-test-manifest:$composeUiVer",
     "androidx.compose.ui:ui-tooling-preview:$composeUiVer",
     "androidx.compose.ui:ui-tooling:$composeUiVer",
+    "androidx.compose.ui:ui-util:$composeUiVer",
     "androidx.compose.ui:ui-graphics",
-    "androidx.compose.ui:ui:$}"
+    "androidx.compose.ui:ui:1.0.5"
 ) and swipeRefresher()
 
 private fun DependencyHandlerScope.swipeRefresher() = implementation(
@@ -57,6 +58,12 @@ private const val koinVer = "3.3.3"
 private fun DependencyHandlerScope.koin() = implementation(
     "io.insert-koin:koin-android:$koinVer",
     "io.insert-koin:koin-core:$koinVer"
+)
+
+private val pagerVer = "0.19.0"
+private fun DependencyHandlerScope.pager() = implementation(
+    "com.google.accompanist:accompanist-pager:$pagerVer",
+    "com.google.accompanist:accompanist-pager-indicators:$pagerVer"
 )
 
 @Suppress("unused_parameter")

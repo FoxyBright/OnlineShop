@@ -47,6 +47,7 @@
     <!--  PageTwo-screen  -->
     <string name="page_two_items_quantity">Quantity:</string>
     <string name="page_two_add_to_cart">ADD TO CART</string>
+    <string name="page_two_color_label">Color:</string>
 
     <!--  shared  -->
     <string name="first_name_placeholder">First name</string>

@@ -15,6 +15,7 @@ import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.satriaadhipradana.feature.presentation.ui.pageone.components.*
 import com.satriaadhipradana.shared.R
+import com.satriaadhipradana.shared.components.OSLoading
 import com.satriaadhipradana.shared.components.OSNavBar
 import com.satriaadhipradana.shared.components.OSSearch
 import com.satriaadhipradana.shared.model.*
@@ -38,7 +39,7 @@ private fun PageOnePreview() {
 }
 
 data class PageOneState(
-    val profile: ProfileModel,
+    val profile: ProfileModel?,
     val search: String,
     val latest: List<ProductModel>,
     val flashSale: List<ProductModel>,
@@ -77,30 +78,37 @@ fun PageOneContent(
             { callback?.onNavigate(it) }
         }, containerColor = colorScheme.background
     ) {
-        val scope = rememberCoroutineScope()
-        var swipeState by remember { mutableStateOf(false) }
-        SwipeRefresh(
-            rememberSwipeRefreshState(swipeState), {
-                scope.launch {
-                    swipeState = true
-                    delay(3000)
-                    callback?.onUpdate()
-                    swipeState = false
+        if(
+            state.latest.isNotEmpty()
+            && state.flashSale.isNotEmpty()
+            && state.brands.isNotEmpty()
+            && state.profile != null
+        ) {
+            val scope = rememberCoroutineScope()
+            var swipeState by remember { mutableStateOf(false) }
+            SwipeRefresh(
+                rememberSwipeRefreshState(swipeState), {
+                    scope.launch {
+                        swipeState = true
+                        delay(3000)
+                        callback?.onUpdate()
+                        swipeState = false
+                    }
+                }, Modifier.padding(
+                    top = it.calculateTopPadding()
+                ), indicator = { s, t ->
+                    SwipeRefreshIndicator(
+                        s, t, contentColor = colorScheme.primary
+                    )
                 }
-            }, Modifier.padding(
-                top = it.calculateTopPadding()
-            ), indicator = { s, t ->
-                SwipeRefreshIndicator(
-                    s, t, contentColor = colorScheme.primary
+            ) {
+                Content(
+                    state,
+                    modifier.padding(bottom = it.calculateBottomPadding()),
+                    callback
                 )
             }
-        ) {
-            Content(
-                state,
-                modifier.padding(bottom = it.calculateBottomPadding()),
-                callback
-            )
-        }
+        } else OSLoading(Modifier.padding(it))
     }
 }
 

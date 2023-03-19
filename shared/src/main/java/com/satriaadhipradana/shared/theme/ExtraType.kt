@@ -121,21 +121,61 @@ class ExtraType {
             fontSize = 9.sp,
             fontWeight = SemiBold
         )
-    
+        
         val productPrice = productName.copy(
             fontSize = 7.sp
         )
-    
+        
         val saleCat = catName.copy(
             fontSize = 9.sp
         )
-    
+        
         val salePrice = productPrice.copy(
             fontSize = 10.sp
         )
         
         val saleName = productName.copy(
             fontSize = 13.sp
+        )
+        
+        val fullProductName = poppinsTextStyle.copy(
+            color = OSBlack,
+            fontSize = 17.sp,
+            fontWeight = SemiBold
+        )
+        
+        val fullProductPrice = fullProductName.copy(
+            fontSize = 13.sp,
+        )
+        
+        val rating = fullProductName.copy(
+            fontSize = 9.sp,
+        )
+        
+        val quantity = poppinsTextStyle.copy(
+            color = LightGray,
+            fontSize = 9.sp,
+            fontWeight = Medium
+        )
+        
+        val addCart = poppinsTextStyle.copy(
+            color = White,
+            fontSize = 8.sp,
+            fontWeight = SemiBold
+        )
+        
+        val sum = addCart.copy(LightPurple)
+        
+        val color = poppinsTextStyle.copy(
+            color = Gray33,
+            fontSize = 10.sp,
+            fontWeight = SemiBold
+        )
+        
+        val descAndReview = poppinsTextStyle.copy(
+            color = LightGray,
+            fontSize = 9.sp,
+            fontWeight = Medium
         )
         
         val viewAll = poppinsTextStyle.copy(

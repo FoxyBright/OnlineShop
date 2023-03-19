@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.satriaadhipradana.domain.viewmodel.PageOneViewModel
-import com.satriaadhipradana.shared.components.OSLoading
 import com.satriaadhipradana.shared.extensions.notImpl
 import com.satriaadhipradana.shared.model.CategoryModel
 import kotlinx.coroutines.launch
@@ -27,14 +26,9 @@ fun PageOneScreen(
     
     LaunchedEffect(Unit) { vm.getData() }
     
-    if(
-        latest.isNotEmpty()
-        && flashSale.isNotEmpty()
-        && brands.isNotEmpty()
-        && profile != null
-    ) PageOneContent(
+    PageOneContent(
         PageOneState(
-            profile!!, search, latest, flashSale, brands
+            profile, search, latest, flashSale, brands
         ), Modifier, object: PageOneCallback {
             override fun onSearchChange(text: String) {
                 scope.launch { vm.searchTextChange(text) }
@@ -91,6 +85,6 @@ fun PageOneScreen(
                 )
             }
         }
-    ) else OSLoading()
+    )
 }
 
