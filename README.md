@@ -1,11 +1,5 @@
 # OnlineShop
-Test the app to appear at work
-
 Figma https://www.figma.com/file/v9w05mwEzcTtzFvqYRHcY4/Untitled?node-id=0-1&t=bCorieTlFnK2oA90-0
-
-Video YOUTUB -> https://youtu.be/VQzk8mrwIts
-
-https://user-images.githubusercontent.com/75783159/226283133-2a271a27-0ebf-4316-a1e9-5331bb110f04.mp4
 
 ![pRtHFxY1tgY](https://user-images.githubusercontent.com/75783159/226210697-73fda743-e5a8-4e51-91b3-2feaaa901a2a.jpg)
 
